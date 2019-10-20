@@ -20,7 +20,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.BatchSize;
 
-import com.blog.config.Constants;
+import com.blog.constants.BlogConstants;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
@@ -41,7 +41,7 @@ public class User extends AbstractAuditingEntity {
 	private Long id;
 
 	@NotNull
-	@Pattern(regexp = Constants.LOGIN_REGEX)
+	@Pattern(regexp = BlogConstants.LOGIN_REGEX)
 	@Size(min = 3, max = 50)
 	@Column(length = 50, unique = true, nullable = false)
 	private String login;
@@ -143,6 +143,10 @@ public class User extends AbstractAuditingEntity {
 	}
 
 	public boolean isActivated() {
+		return activated;
+	}
+	
+	public boolean getActivated() {
 		return activated;
 	}
 
